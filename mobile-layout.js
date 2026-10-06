@@ -302,28 +302,48 @@
   function updateFooterExhibitNavigation() {
     const footer = document.getElementById('SITE_FOOTER');
     const nav = footer?.querySelector('nav[aria-label="Site"]');
-    if (!footer || !nav) {
+    if (!footer) {
       return;
     }
 
-    const item = [...nav.querySelectorAll('li')].find((candidate) => {
-      const label = candidate.querySelector('[data-testid^="linkElement"]');
-      return label?.textContent.trim().toLowerCase() === 'exhibit';
-    });
-    const trigger = item?.querySelector('[data-testid^="linkElement"]');
-    if (trigger && (trigger.tagName !== 'A' || !trigger.href.endsWith('/contact-us.html'))) {
-      const link = document.createElement('a');
-      link.className = trigger.className;
-      link.dataset.testid = trigger.dataset.testid || 'lady-footer-exhibit-link';
-      link.href = `${prefix}contact-us.html`;
-      link.textContent = 'EXHIBIT';
-      link.setAttribute('aria-label', 'Contact Lady Events');
-      trigger.replaceWith(link);
+    if (nav) {
+      const item = [...nav.querySelectorAll('li')].find((candidate) => {
+        const label = candidate.querySelector('[data-testid^="linkElement"]');
+        return label?.textContent.trim().toLowerCase() === 'exhibit';
+      });
+      const trigger = item?.querySelector('[data-testid^="linkElement"]');
+      if (trigger && (trigger.tagName !== 'A' || !trigger.href.endsWith('/contact-us.html'))) {
+        const link = document.createElement('a');
+        link.className = trigger.className;
+        link.dataset.testid = trigger.dataset.testid || 'lady-footer-exhibit-link';
+        link.href = `${prefix}contact-us.html`;
+        link.textContent = 'EXHIBIT';
+        link.setAttribute('aria-label', 'Contact Lady Events');
+        trigger.replaceWith(link);
+      }
+
+      const submenu = item?.querySelector('ul');
+      if (submenu) {
+        hideElement(submenu);
+      }
     }
 
-    const submenu = item?.querySelector('ul');
-    if (submenu) {
-      hideElement(submenu);
+    if (!footer.querySelector('.lady-powered-by')) {
+      const copyright = [...footer.querySelectorAll('p')].find((paragraph) =>
+        paragraph.textContent.trim().startsWith('©')
+      );
+      const attribution = document.createElement('a');
+      attribution.className = 'lady-powered-by';
+      attribution.href = 'https://egyptcode.online/';
+      attribution.target = '_blank';
+      attribution.rel = 'noopener noreferrer';
+      attribution.textContent = 'Powered by Egypt Code';
+      attribution.setAttribute('aria-label', 'Powered by Egypt Code (opens in a new tab)');
+      if (copyright) {
+        copyright.after(attribution);
+      } else {
+        footer.append(attribution);
+      }
     }
 
     if (!footer.dataset.ladyExhibitObserver) {

@@ -59,6 +59,21 @@ a[aria-label*="facebook" i] {
   color: var(--lady-forest) !important;
 }
 
+.lady-powered-by {
+  display: block;
+  width: fit-content;
+  margin: 8px auto 0;
+  color: var(--lady-forest) !important;
+  font: 600 12px/1.4 Arial, sans-serif;
+  text-decoration: none;
+}
+
+.lady-powered-by:hover,
+.lady-powered-by:focus-visible {
+  color: var(--lady-blush) !important;
+  text-decoration: underline;
+}
+
 #SITE_CONTAINER main h1,
 #SITE_CONTAINER main h2,
 #SITE_CONTAINER main h3,
