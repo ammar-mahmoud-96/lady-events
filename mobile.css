@@ -9,7 +9,7 @@ body {
   display: none;
 }
 
-@media (max-width: 979px) {
+@media (max-width: 980px) {
   html,
   body {
     height: auto !important;
