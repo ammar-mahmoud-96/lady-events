@@ -1,34 +1,14 @@
 (() => {
-  const designWidth = 980;
-  const mobileQuery = window.matchMedia(`(max-width: ${designWidth - 1}px)`);
   const container = document.getElementById('SITE_CONTAINER');
-  const siteRoot = document.getElementById('site-root');
   const masterPage = document.getElementById('masterPage');
 
-  function setMobileLayout() {
-    if (!container || !siteRoot || !masterPage) {
-      return;
+  function updateDesignHeight() {
+    if (container && masterPage) {
+      container.style.setProperty(
+        '--lady-design-height',
+        `${masterPage.offsetHeight}px`
+      );
     }
-
-    if (!mobileQuery.matches) {
-      masterPage.style.removeProperty('transform');
-      siteRoot.style.removeProperty('height');
-      container.style.removeProperty('width');
-      container.style.removeProperty('min-width');
-      container.style.removeProperty('height');
-      return;
-    }
-
-    const viewportWidth = document.documentElement.clientWidth;
-    const scale = viewportWidth / designWidth;
-    const scaledHeight = `${masterPage.offsetHeight * scale}px`;
-
-    masterPage.style.transformOrigin = 'top left';
-    masterPage.style.transform = `scale(${scale})`;
-    siteRoot.style.height = scaledHeight;
-    container.style.width = `${viewportWidth}px`;
-    container.style.minWidth = '0';
-    container.style.height = scaledHeight;
   }
 
   function createMobileMenu() {
@@ -98,11 +78,10 @@
     document.body.append(button, nav);
   }
 
-  setMobileLayout();
+  updateDesignHeight();
   createMobileMenu();
-  window.addEventListener('resize', setMobileLayout, { passive: true });
 
   if ('ResizeObserver' in window && masterPage) {
-    new ResizeObserver(setMobileLayout).observe(masterPage);
+    new ResizeObserver(updateDesignHeight).observe(masterPage);
   }
 })();
