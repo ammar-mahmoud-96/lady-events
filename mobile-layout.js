@@ -519,6 +519,10 @@
   }
 
   function updateEventDetails() {
+    if (window.location.pathname.toLowerCase().endsWith('/event-list.html')) {
+      document.body.classList.add('lady-events-page');
+    }
+
     const oldEventSlug = 'cfm-autumn-edition-17-oct-2026-ghurnata-community-space-heliopolis';
     const contactPage = `${prefix}contact-us.html`;
     const eventTitles = document.querySelectorAll('[data-hook="title"], [data-hook="event-title"]');

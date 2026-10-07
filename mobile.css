@@ -253,6 +253,65 @@ a[aria-label*="facebook" i] {
     min-height: 100vh;
   }
 
+  body.lady-events-page {
+    background-color: var(--lady-butter) !important;
+  }
+
+  body.lady-events-page [id^="pageBackground_"] [data-testid="colorUnderlay"] {
+    background-color: var(--lady-butter) !important;
+  }
+
+  #SITE_PAGES #comp-lyumb4xv,
+  #SITE_PAGES #TPASection_lyumarba,
+  #SITE_PAGES #wix-events-widget {
+    height: auto !important;
+    min-height: 0 !important;
+  }
+
+  #SITE_PAGES #TPASection_lyumarba {
+    width: 100% !important;
+  }
+
+  #SITE_PAGES #wix-events-widget .UZJLP7 {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 auto calc(20px / var(--lady-mobile-scale)) !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul {
+    width: calc(100% - 16px / var(--lady-mobile-scale)) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul > li {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul li > div {
+    height: auto !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul li > div > div:first-child {
+    height: auto !important;
+    aspect-ratio: 2 / 1 !important;
+    padding-top: 0 !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul li > div > div:first-child > * {
+    height: 100% !important;
+  }
+
+  #SITE_PAGES #wix-events-widget ul li > div > div:last-child {
+    min-height: 0 !important;
+    padding: calc(16px / var(--lady-mobile-scale)) 0 !important;
+  }
+
   #SITE_CONTAINER {
     --lady-mobile-scale: calc(
       (100vw - var(--scrollbar-width, 0px)) / 980px
